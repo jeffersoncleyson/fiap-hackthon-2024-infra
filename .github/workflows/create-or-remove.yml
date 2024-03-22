@@ -41,11 +41,11 @@ jobs:
       - name: Cloning Lambdas
         continue-on-error: false
         run: |
-          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-authorizer.git -b main ./lambdas/authorizer
-          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-login.git -b main ./lambdas/login
-          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-ponto.git -b main ./lambdas/ponto
-          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-usuario.git -b main ./lambdas/usuario
-          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-relatorio.git -b main ./lambdas/relatorio
+          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-authorizer.git -b ${{ github.ref_name }} ./lambdas/authorizer
+          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-login.git -b ${{ github.ref_name }} ./lambdas/login
+          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-ponto.git -b ${{ github.ref_name }} ./lambdas/ponto
+          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-usuario.git -b ${{ github.ref_name }} ./lambdas/usuario
+          git clone https://github.com/jeffersoncleyson/fiap-hackthon-2024-lambda-relatorio.git -b ${{ github.ref_name }} ./lambdas/relatorio
 
       
       ############################ AWS SSO
@@ -80,7 +80,7 @@ jobs:
             "smtp_server": "${{vars.SMTP_SERVER}}",
             "smtp_port": ${{vars.SMTP_PORT}},
             "smtp_username": "${{secrets.SMTP_USERNAME}}",
-            "smtp_password": "${{secrets.PASSWORD}}",
+            "smtp_password": "${{secrets.SMTP_PASSWORD}}",
             "lambda_layer_arn": "${{vars.LAMBDA_LAYER_ARN}}"
           }
           EOF
