@@ -80,3 +80,8 @@ variable "smtp_password" {
   description = ""
   type    = string
 }
+
+variable "lambda_layer_arn" {
+  description = ""
+  type    = string
+}

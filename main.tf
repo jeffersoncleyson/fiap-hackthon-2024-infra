@@ -63,10 +63,11 @@ module "documentdb" {
 module "login" {
   source = "git::https://github.com/jeffersoncleyson/fiap-hackthon-2024-tf-lambda.git?ref=main"
   application_name   = var.application_name
-  path_lambda        = "./lambdas"
+  path_lambda        = "lambdas"
   lambda_name        = "login"
   lambda_handler     = "src.main.lambda_handler"
   lambda_runtime     = "python3.9"
+  lambda_layer_arn   = var.lambda_layer_arn
   vpc_public_subnets = [module.network.public_subnet_one, module.network.public_subnet_two]
   vpc_sg_id          = module.network.aws_sg_id
   lambda_environments = {
@@ -80,10 +81,11 @@ module "login" {
 module "authorizer" {
   source = "git::https://github.com/jeffersoncleyson/fiap-hackthon-2024-tf-lambda.git?ref=main"
   application_name   = var.application_name
-  path_lambda        = "./lambdas"
+  path_lambda        = "lambdas"
   lambda_name        = "authorizer"
   lambda_handler     = "src.main.lambda_handler"
   lambda_runtime     = "python3.9"
+  lambda_layer_arn   = var.lambda_layer_arn
   vpc_public_subnets = [module.network.public_subnet_one, module.network.public_subnet_two]
   vpc_sg_id          = module.network.aws_sg_id
   lambda_environments = {
@@ -96,10 +98,11 @@ module "authorizer" {
 module "usuario" {
   source = "git::https://github.com/jeffersoncleyson/fiap-hackthon-2024-tf-lambda.git?ref=main"
   application_name   = var.application_name
-  path_lambda        = "./lambdas"
+  path_lambda        = "lambdas"
   lambda_name        = "usuario"
   lambda_handler     = "src.main.lambda_handler"
   lambda_runtime     = "python3.9"
+  lambda_layer_arn   = var.lambda_layer_arn
   vpc_public_subnets = [module.network.public_subnet_one, module.network.public_subnet_two]
   vpc_sg_id          = module.network.aws_sg_id
   lambda_environments = {
@@ -114,10 +117,11 @@ module "usuario" {
 module "ponto" {
   source = "git::https://github.com/jeffersoncleyson/fiap-hackthon-2024-tf-lambda.git?ref=main"
   application_name   = var.application_name
-  path_lambda        = "./lambdas"
+  path_lambda        = "lambdas"
   lambda_name        = "ponto"
   lambda_handler     = "src.main.lambda_handler"
   lambda_runtime     = "python3.9"
+  lambda_layer_arn   = var.lambda_layer_arn
   vpc_public_subnets = [module.network.public_subnet_one, module.network.public_subnet_two]
   vpc_sg_id          = module.network.aws_sg_id
   lambda_environments = {
@@ -131,10 +135,11 @@ module "ponto" {
 module "relatorio" {
   source = "git::https://github.com/jeffersoncleyson/fiap-hackthon-2024-tf-lambda.git?ref=main"
   application_name   = var.application_name
-  path_lambda        = "./lambdas"
+  path_lambda        = "lambdas"
   lambda_name        = "relatorio"
   lambda_handler     = "src.main.lambda_handler"
   lambda_runtime     = "python3.9"
+  lambda_layer_arn   = var.lambda_layer_arn
   vpc_public_subnets = [module.network.private_subnet_one, module.network.private_subnet_two]
   vpc_sg_id          = module.network.aws_sg_id
   lambda_environments = {
