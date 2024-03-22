@@ -221,3 +221,4 @@ terraform.rc
 !**/lambdas/README.txt
 connect-ec2.sh
 *.env
+*.code-workspace
